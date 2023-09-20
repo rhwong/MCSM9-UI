@@ -61,6 +61,9 @@ export default {
       config: null,
       description: {
         "txlib_version": this.$t("processConfig.qsignJson.txlib_version"),
+        "host": this.$t("processConfig.qsignJson.host"),
+        "port": this.$t("processConfig.qsignJson.port"),
+        "key": this.$t("processConfig.qsignJson.key"),
       }
     };
   }
