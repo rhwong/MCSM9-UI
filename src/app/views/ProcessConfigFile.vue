@@ -71,6 +71,8 @@ import geyserYml from "../../components/mc_process_config/geyser.yml";
 import mcdrConfigYml from "../../components/mc_process_config/mcdr_config.yml";
 import permissionYml from "../../components/mc_process_config/permission.yml";
 import velocityToml from "../../components/mc_process_config/velocity.toml";
+import gocqYml from "../../components/bot_config/gocqhttp.yml";
+import qsignJson from "../../components/bot_config/qsign.json";
 
 export default {
   components: {
@@ -89,7 +91,9 @@ export default {
     "geyser/config.yml": geyserYml,
     "mcdr/config.yml": mcdrConfigYml,
     "mcdr/permission.yml": permissionYml,
-    "velocity/velocity.toml": velocityToml
+    "velocity/velocity.toml": velocityToml,
+    "go-cqhttp/config.yml": gocqYml,
+    "qsign/txlib_version.json": qsignJson
   },
   data: function () {
     return {

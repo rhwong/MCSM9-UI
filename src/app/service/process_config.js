@@ -17,7 +17,9 @@ import {
   TYPE_MINECRAFT_FABRIC,
   TYPE_MINECRAFT_SPONGE,
   TYPE_MINECRAFT_MOHIST,
-  TYPE_MINECRAFT_MCDR
+  TYPE_MINECRAFT_MCDR,
+  TYPE_BOT_GOCQHTTP,
+  TYPE_BOT_QSIGN,
 } from "./instance_type";
 import i18n from "../i18n"
 const $t=i18n.global.t
@@ -42,6 +44,28 @@ export const INSTANCE_CONFIGS = [
     author: "Lazy",
     github: "https://github.com/LazyCreeper",
     category: [TYPE_MINECRAFT_BDS, TYPE_MINECRAFT_BEDROCK]
+  },
+  // cqhttp
+  {
+    fileName: $t("processConfig.introduction.gocqYml.name"),
+    type: "yml",
+    info: $t("processConfig.introduction.gocqYml.info"),
+    path: "config.yml",
+    redirect: "go-cqhttp/config.yml",
+    author: "rhwong",
+    github: "https://github.com/rhwong/",
+    category: [TYPE_BOT_GOCQHTTP]
+  },
+    // qsign
+  {
+    fileName: $t("processConfig.introduction.qsignJson.name"),
+    type: "json",
+    info: $t("processConfig.introduction.qsignJson.info"),
+    path: "txlib_version.json",
+    redirect: "qsign/txlib_version.json",
+      author: "rhwong",
+      github: "https://github.com/rhwong/",
+      category: [TYPE_BOT_QSIGN]
   },
   {
     fileName: $t("processConfig.introduction.bukkitYml.name"),

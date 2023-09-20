@@ -420,7 +420,9 @@
     "MC Geyser": "MC Geyser",
     "MC MCDR": "MC MCDR",
     "MC Velocity": "MC Velocity",
-    "Web Shell": "Web Shell"
+    "Web Shell": "Web Shell",
+    "BOT GO-CQHTTP": "BOT GO-CQHTTP",
+    "BOT QSIGN": "BOT QSIGN"
   },
   "terminal": {
     "name": "名称",
@@ -520,6 +522,16 @@
         "name": "[Bungeecord] config.yml",
         "info": "Bungeecord 群组服务端的重要配置文件，可以进行分布式管理，节点控制等，但此配置文件较为复杂，此处仅供简单的配置和操作",
         "infoLong": "此配置适用于 BungeeCord 群组服务端软件，但由于此配置文件略微有些复杂，大部分配置只能进行简单修改，建议您使用文件在线管理功能编辑此文件。"
+      },
+      "gocqYml": {
+        "name": "[GO-CQHTTP] config.yml",
+        "info": "GO-CQHTTP 配置文件，适配dev-f16d72f以上（支持冗余qsign的版本）",
+        "infoLong": "此配置适用于 GO-CQHTTP"
+      },
+      "qsignJson": {
+        "name": "[Qsign] unidbg-fetch-qsign-onekey tx_lib.json",
+        "info": "unidbg-fetch-qsign-onekey 配置文件，适配1.2.1以上",
+        "infoLong": "此配置适用于 unidbg-fetch-qsign-onekey"
       },
       "eulaTxt": {
         "name": "[通用] eula.txt",
@@ -689,6 +701,138 @@
       "disabledCommands": "禁用的指令",
       "servers": "下游服务端设置，只有在此处设置过的下游服务器才可被连接"
     },
+    "gocqYml": {
+      "account": 
+        {
+          "uin": "QQ账号",
+          "password": "请务必输入密码",
+          "encrypt": "是否开启密码加密",
+          "status": "在线状态 请参考 https://docs.go-cqhttp.org/guide/config.html",
+          "relogin": {
+            "delay": "首次重连延迟, 单位秒",
+            "interval": "重连间隔",
+            "max-times": "最大重连次数, 0为无限制"
+          },
+          "use-sso-address": "是否使用服务器下发的新地址进行重连(注意, 此设置可能导致在海外服务器上连接情况更差)",
+          "allow-temp-session": "是否允许发送临时会话消息",
+          "sign-servers":[
+              {
+              "url": "主签名服务器地址， 必填",
+              "key": "签名服务器所需要的apikey, 如果签名服务器的版本在1.1.0及以下则此项无效",
+              "authorization": "authorization 内容, 依服务端设置，如 'Bearer xxxx'"
+              },
+              {
+              "url": "备用签名服务器，选填",
+              "key": "签名服务器所需要的apikey",
+              "authorization": "authorization 内容, 依服务端设置，如 'Bearer xxxx'"
+              }
+            ],
+          "rule-change-sign-server": "签名服务切换规则：0 关闭/1 sign为空(请关闭auto-register)/2 sign 或 token 为空(请关闭auto-refresh-token)",
+          "max-check-count": "寻找可用签名服务器最大尝试次数，为 0 时会在连续 3 次没有找到后保持使用主服务器，不再尝试切换备用",
+          "sign-server-timeout": "签名服务请求超时时间(s)",
+          "is-below-110": "如果签名服务器的版本在1.1.0及以下, 请开启(建议使用 1.1.6 以上版本，低版本半个月冻结一次)",
+          "auto-register": "自动重新注册，建议关闭此项",
+          "auto-refresh-token": "token 过期后是否立即自动刷新签名，独立于定时刷新",
+          "refresh-interval": "定时刷新 token 间隔时间，建议 30~40 分钟, 不可超过 60 分钟"
+        }
+      ,
+      "heartbeat": {
+        "interval": "心跳频率, 单位秒 -1 为关闭心跳"
+      },
+      "message": {
+        "post-format": "上报数据类型，可选: string,array",
+        "ignore-invalid-cqcode": "是否忽略无效的CQ码, 如果为假将原样发送",
+        "force-fragment": "是否强制分片发送消息，分片发送将会带来更快的速度，但是兼容性会有些问题",
+        "fix-url": "是否将url分片发送",
+        "proxy-rewrite": "下载图片等请求网络代理",
+        "report-self-message": "是否上报自身消息",
+        "remove-reply-at": "移除服务端的Reply附带的At",
+        "extra-reply-data": "为Reply附加更多信息",
+        "skip-mime-scan": "跳过 Mime 扫描, 忽略错误数据",
+        "convert-webp-image": "是否自动转换 WebP 图片",
+        "http-timeout": "download 超时时间(s)"
+      },
+      "output": {
+        "log-level": "日志等级 trace,debug,info,warn,error",
+        "log-aging": "日志时效 单位天. 超过这个时间之前的日志将会被自动删除. 设置为 0 表示永久保留.",
+        "log-force-new": "是否在每次启动时强制创建全新的文件储存日志. 为 false 的情况下将会在上次启动时创建的日志文件续写",
+        "log-colorful": "是否启用日志颜色",
+        "debug": "是否启用 DEBUG"
+      },
+      "default-middlewares": {
+        "access-token": "访问密钥, 强烈推荐在公网的服务器设置",
+        "filter": "事件过滤器文件目录",
+        "rate-limit":{
+          "enabled": "是否启用限速",
+          "frequency": "令牌回复频率, 单位秒",
+          "bucket": "令牌桶大小"
+        }
+      },
+      "database": {
+        "leveldb": {"enable": "是否启用内置leveldb数据库,关闭将无法使用 撤回 回复 get_msg 等上下文相关功能"},
+        "sqlite3": {
+          "enable": "是否启用内置sqlite3数据库",
+          "cachettl": "3600000000000=1h"
+        }
+      },
+      "servers": [
+          { 
+          "http": {
+          "address": "HTTP监听地址",
+          "version": "OneBot协议版本, 支持 11/12",
+          "timeout": "反向 HTTP 超时时间, 单位秒，<5 时将被忽略",
+          "long-polling": {
+            "enabled": "是否开启长轮询拓展",
+            "max-queue-size": "消息队列大小，0 表示不限制队列大小，谨慎使用"
+            },
+          "middlewares": {
+            "<<": "引用默认中间件"
+            },
+          "post": [
+              {
+                "url": "地址",
+                "secret": "密钥",
+                "max-retries": "最大重试，0 时禁用",
+                "retries-interval": "重试时间，单位毫秒，0 时立即"
+              },{
+                "url": "地址",
+                "secret": "密钥",
+                "max-retries": "最大重试，0 时禁用",
+                "retries-interval": "重试时间，单位毫秒，0 时立即"
+              }
+            ] 
+          }
+        },
+        {
+          "lambda": {
+            "type": "腾讯云函数 aws: aws Lambda",
+            "middlewares": {
+              "<<": "引用默认中间件"
+            }
+          }
+        },
+        {
+          "ws": {
+        "address": "正向WS服务器监听地址",
+        "middlewares": {
+          "<<": "引用默认中间件"
+        }
+          }
+        },
+        {
+          "ws-reverse":{
+            "universal": "反向WS Universal 地址，注意 设置了此项地址后下面两项将会被忽略",
+            "api": "反向WS API 地址",
+            "event": "反向WS Event 地址",
+            "reconnect-interval": "重连间隔 单位毫秒",
+            "middlewares": {
+              "<<": "引用默认中间件"
+            }
+          }
+        }
+      ]
+    },
+    "qsignJson": {"txlib_version": "txlib协议版本，可选3.5.1/3.5.2/8.9.58/8.9.63(default)/8.9.68/8.9.70/8.9.71/8.9.73"},
     "eulaTxt": {
       "eula": "是否同意 Minecraft EULA协议，如果您要启动 Minecraft 服务器，则此选项是必须开启"
     },

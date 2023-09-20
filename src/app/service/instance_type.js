@@ -18,6 +18,8 @@ export const TYPE_MINECRAFT_BEDROCK = "minecraft/bedrock";
 export const TYPE_MINECRAFT_BDS = "minecraft/bedrock/bds";
 export const TYPE_MINECRAFT_NUKKIT = "minecraft/bedrock/nukkit";
 export const TYPE_STEAM_SERVER_UNIVERSAL = "steam/universal";
+export const TYPE_BOT_GOCQHTTP = "bot/go-cqhttp";
+export const TYPE_BOT_QSIGN = "bot/qsign";
 
 // Front-end selectable type list
 const INSTANCE_TYPE_TRANSLATION = {};
@@ -37,6 +39,8 @@ INSTANCE_TYPE_TRANSLATION[TYPE_MINECRAFT_BUKKIT] = "MC Bukkit";
 INSTANCE_TYPE_TRANSLATION[TYPE_MINECRAFT_GEYSER] = "MC Geyser";
 INSTANCE_TYPE_TRANSLATION[TYPE_MINECRAFT_MCDR] = "MC MCDR";
 INSTANCE_TYPE_TRANSLATION[TYPE_WEB_SHELL] = "Web Shell";
+INSTANCE_TYPE_TRANSLATION[TYPE_BOT_QSIGN] = "BOT QSIGN";
+INSTANCE_TYPE_TRANSLATION[TYPE_BOT_GOCQHTTP] = "BOT GO-CQHTTP";
 
 // Different types of specific configuration files
 const INSTANCE_TYPE_DEF_CONFIG = {
@@ -100,6 +104,14 @@ const INSTANCE_TYPE_DEF_CONFIG = {
   [TYPE_MINECRAFT_MCDR]: {
     stopCommand: "stop",
     getConfigEntryName: () => window.$t("service.instance_type.009")
+  },
+  [TYPE_BOT_GOCQHTTP]: {
+    stopCommand: "^c",
+    getConfigEntryName: () => window.$t("service.instance_type.002")
+  },
+  [TYPE_BOT_QSIGN]: {
+    stopCommand: "^c^c",
+    getConfigEntryName: () => window.$t("service.instance_type.002")
   }
 };
 

@@ -420,7 +420,9 @@
     "MC Geyser": "MC Geyser",
     "MC MCDR": "MC MCDR",
     "MC Velocity": "MC Velocity",
-    "Web Shell": "Web Shell"
+    "Web Shell": "Web Shell",
+    "BOT GO-CQHTTP": "BOT GO-CQHTTP",
+    "BOT QSIGN": "BOT QSIGN"
   },
   "terminal": {
     "name": "Name",
@@ -501,7 +503,7 @@
     "sameFile": "Duplicate file exist",
     "author": "Module Author",
     "unknownCompatible": "The panel is unable to confirm the compatibility of this config file, please use at your own risk.",
-    "browse": "Browse"
+    "browse": "Browse",
     "introduction": {
       "common": {
         "aboutConfig": "About config"
@@ -520,6 +522,16 @@
         "name": "[Bungeecord] config.yml",
         "info": "Important configuration file of Bungeecord server, you can carry out distributed management, node control, etc., but this configuration file is more complex, this is only a simple configuration and operation.",
         "infoLong": "Important configuration file of Bungeecord server, you can carry out distributed management, node control, etc., but this configuration file is more complex, this is only a simple configuration and operation."
+      },
+      "gocqYml": {
+        "name": "[GO-CQHTTP] config.yml",
+        "info": "GO-CQHTTP config for dev-f16d72f+ (support redundance qsign )",
+        "infoLong": "This config for GO-CQHTTP"
+      },
+      "qsignJson": {
+        "name": "[Qsign] unidbg-fetch-qsign-onekey tx_lib.json",
+        "info": "unidbg-fetch-qsign-onekey config , support 1.2.1+",
+        "infoLong": "This config for unidbg-fetch-qsign-onekey"
       },
       "eulaTxt": {
         "name": "[Common] eula.txt",
